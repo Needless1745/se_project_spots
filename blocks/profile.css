@@ -1,0 +1,66 @@
+.profile {
+  display: flex;
+  padding: 34px 0 20px;
+  border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
+}
+
+.profile__avatar {
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
+.profile__column {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__name {
+  margin: 0 0 12px;
+}
+
+.profiile__description {
+  margin: 0;
+}
+
+.profile__edit-btn {
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  height: 16px;
+  gap: 8px;
+  opacity: 0.7;
+  margin-top: auto;
+  border: none;
+  background: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  color: #212121;
+}
+
+.profile__edit-btn:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.profile__add-btn {
+  margin-top: auto;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  gap: 8px;
+  border-radius: 8pt;
+  padding: 18px 32px 18px 32px;
+  background-color: #212121;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  color: #fcf5e5;
+}
+
+.profile__add-btn:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
