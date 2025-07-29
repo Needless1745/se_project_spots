@@ -32,7 +32,7 @@
   color: #212121;
 }
 
-.profiile__description {
+.profile__description {
   margin: 0;
   font-family: Poppins, Arial, Helvetica, sans-serif;
   font-weight: 500;
@@ -61,6 +61,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 100%;
+  padding: 0;
   color: #212121;
 }
 

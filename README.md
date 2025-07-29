@@ -2,7 +2,7 @@
 
 ### Overview
 
-An image sharing site. Providing users with an opportunity to sharea nd discover places around the world.
+An image sharing site. Providing users with an opportunity to share and discover places around the world.
 
 ## Tech Stack
 
