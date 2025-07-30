@@ -88,6 +88,7 @@
 .profile__add-btn:hover {
   opacity: 0.8;
   cursor: pointer;
+  transition: opacity 0.5s;
 }
 
 .profile__add-btn-img {
