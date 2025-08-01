@@ -27,8 +27,8 @@ The `@media screen and (max-width: 627px)` block is a CSS **media query** which 
 
 This allows for the elements in the site to be organized on screen depending on the device the user is on.
 
-![alt text](Phoneview.png)
-![alt text](Tabletview.png)
+![alt text](./images/Phoneview.png)
+![alt text](./images/Tabletview.png)
 
 ## Deployment
 
