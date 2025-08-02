@@ -8,7 +8,7 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 1.2;
-  max-width: 350px;
+  max-width: 250px;
   margin: 0;
   color: #212121;
   text-overflow: ellipsis;
@@ -49,10 +49,6 @@
   opacity: 100%;
   cursor: pointer;
   transition: opacity 0.5s;
-<<<<<<< HEAD
-=======
-  
->>>>>>> 9fcdb156c68ace14bc018290225b36c5969eb506
 }
 
 @media screen and (max-width: 627px) {
