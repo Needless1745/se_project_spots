@@ -15,10 +15,14 @@
   line-height: 100%;
   font-style: medium;
   padding: 10px;
+  opacity: 0;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
 }
 
 .modal_is-opened {
   visibility: visible;
+  opacity: 1;
+  transition: visibility 0.3s, opacity 0.3s;
 }
 
 .modal__container {
