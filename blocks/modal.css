@@ -13,7 +13,6 @@
   font-weight: 500;
   font-size: 32px;
   line-height: 100%;
-  font-style: medium;
   padding: 10px;
   opacity: 0;
   transition: visibility 0s linear 0.5s, opacity 0.5s linear;
@@ -22,10 +21,11 @@
 .modal_is-opened {
   visibility: visible;
   opacity: 1;
-  transition: visibility 0.3s, opacity 0.3s;
+  transition: visibility 0.3s linear, opacity 0.3s linear;
 }
 
 .modal__container {
+  box-sizing: border-box;
   max-width: 730px;
   width: 100%;
   border-radius: 8px;
@@ -44,7 +44,7 @@
   border: none;
   background-color: #fff;
   cursor: pointer;
-  transition: opacity, 0.3s;
+  transition: opacity 0.3s;
 }
 
 .modal__close-btn:hover {
@@ -92,7 +92,7 @@
   font-family: poppins, Arial, Helvetica, sans-serif;
   line-height: 100%;
   cursor: pointer;
-  transition: opacity, 0.3s;
+  transition: opacity 0.3s;
 }
 
 .modal__submit-btn:hover {
@@ -103,6 +103,11 @@
   .modal {
     font-size: 20px;
     max-width: none;
+  }
+
+  .modal__close-btn {
+    top: 22px;
+    right: 12px;
   }
 }
 
