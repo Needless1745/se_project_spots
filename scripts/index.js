@@ -60,6 +60,11 @@ function getCardElement(data) {
   cardImageEl.alt = data.name;
   cardTitleEl.textContent = data.name;
 
+  const cardLikeBtnEl = cardElement.querySelector(".card__like-btn");
+  cardLikeBtnEl.addEventListener("click", () => {
+    cardLikeBtnEl.classList.toggle("card__like-btn_active");
+  });
+
   return cardElement;
 }
 
@@ -92,11 +97,18 @@ editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-  console.log(newPostNameInput.value);
-  console.log(newPostLinkInput.value);
+
+  const inputValues = {
+    name: newPostNameInput.value,
+    link: newPostLinkInput.value,
+  };
+
+  const cardElement = getCardElement(inputValues);
+  cardsList.prepend(cardElement);
+  closeModal(newPostModal);
 }
 
-newPostModal.addEventListener("submit", handleAddCardSubmit);
+newPostForm.addEventListener("submit", handleAddCardSubmit);
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
