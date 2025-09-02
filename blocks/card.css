@@ -21,6 +21,7 @@
   aspect-ratio: 16/9;
   object-fit: cover;
   display: block;
+  cursor: pointer;
   margin-bottom: 12px;
   height: 413px;
   border-radius: 8px;
