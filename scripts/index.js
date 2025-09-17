@@ -103,7 +103,7 @@ editProfileCloseBtn.addEventListener("click", function () {
 });
 
 newPostBtn.addEventListener("click", function () {
-  disablebutton(modalSubmitBtn);
+  disableButton(modalSubmitBtn);
   openModal(newPostModal);
 });
 
@@ -135,7 +135,7 @@ function handleAddCardSubmit(evt) {
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
   evt.target.reset();
-  disablebutton(modalSubmitBtn, settings);
+  disableButton(modalSubmitBtn, config);
   closeModal(newPostModal);
 }
 
@@ -143,6 +143,7 @@ newPostForm.addEventListener("submit", handleAddCardSubmit);
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  resetValidation(newPostForm);
   function evtEscClose(evt) {
     if (evt.key === "Escape") {
       closeModal(modal);
