@@ -42,6 +42,7 @@ const editProfileDescriptionInput = editProfileModal.querySelector(
 
 const newPostBtn = document.querySelector(".profile__add-btn");
 const newPostModal = document.querySelector("#new-post-modal");
+const modalSubmitBtn = document.querySelector(".modal__submit-btn");
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
 const newPostNameInput = newPostModal.querySelector("#post-caption-input");
 const newPostLinkInput = newPostModal.querySelector("#post-image-input");
@@ -102,6 +103,7 @@ editProfileCloseBtn.addEventListener("click", function () {
 });
 
 newPostBtn.addEventListener("click", function () {
+  disablebutton(modalSubmitBtn);
   openModal(newPostModal);
 });
 
@@ -132,7 +134,8 @@ function handleAddCardSubmit(evt) {
 
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
-  newPostForm.reset();
+  evt.target.reset();
+  disablebutton(modalSubmitBtn, settings);
   closeModal(newPostModal);
 }
 
@@ -140,10 +143,29 @@ newPostForm.addEventListener("submit", handleAddCardSubmit);
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  function evtEscClose(evt) {
+    if (evt.key === "Escape") {
+      closeModal(modal);
+    }
+  }
+
+  function evtOverlayClose(evt) {
+    if (evt.target === modal) {
+      closeModal(modal);
+    }
+  }
+  document.addEventListener("keydown", evtEscClose);
+  modal.addEventListener("mousedown", evtOverlayClose);
+
+  modal._evtEscClose = evtEscClose;
+  modal._evtOverlayClose = evtOverlayClose;
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+
+  document.removeEventListener("keydown", modal._evtEscClose);
+  modal.removeEventListener("mousedown", modal._evtOverlayClose);
 }
 
 initialCards.forEach(function (item) {
