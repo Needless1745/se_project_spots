@@ -33,7 +33,3 @@ This allows for the elements in the site to be organized on screen depending on 
 ## Deployment
 
 https://needless1745.github.io/se_project_spots/
-
-## Link to video
-
-https://drive.google.com/file/d/1XoRFT1mjjkgJEODHgji8qVLRmVfcRMO1/view?usp=sharing
