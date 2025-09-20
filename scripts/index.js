@@ -96,6 +96,7 @@ editProfileBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
   openModal(editProfileModal);
+  resetValidation(editProfileModal);
 });
 
 editProfileCloseBtn.addEventListener("click", function () {
@@ -103,7 +104,6 @@ editProfileCloseBtn.addEventListener("click", function () {
 });
 
 newPostBtn.addEventListener("click", function () {
-  disableButton(modalSubmitBtn);
   openModal(newPostModal);
 });
 
@@ -135,7 +135,6 @@ function handleAddCardSubmit(evt) {
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
   evt.target.reset();
-  disableButton(modalSubmitBtn, config);
   closeModal(newPostModal);
 }
 
@@ -143,7 +142,6 @@ newPostForm.addEventListener("submit", handleAddCardSubmit);
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
-  resetValidation(newPostForm);
   function evtEscClose(evt) {
     if (evt.key === "Escape") {
       closeModal(modal);

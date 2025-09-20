@@ -4,14 +4,14 @@ const config = {
   submitButtonSelector: ".modal__submit-btn",
   inactiveButtonClass: "modal__submit-btn_disabled",
   inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error",
+  errorClass: "modal__error_visible",
 };
 
 const showInputError = (formEl, inputEl, errorMsg) => {
   const errorMsgEl = formEl.querySelector(`#${inputEl.id}-error`);
   errorMsgEl.textContent = errorMsg;
   inputEl.classList.add(config.inputErrorClass);
-  formEl.classList.add(config.errorClass);
+  inputEl.classList.add(config.errorClass);
 };
 
 const hideInputError = (formEl, inputEl) => {
@@ -63,7 +63,11 @@ const setEventListeners = (formEl) => {
   const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
   const buttonEl = formEl.querySelector(config.submitButtonSelector);
 
-  toggleButtonState(inputList, buttonEl);
+  toggleButtonState(inputList, buttonEl, config);
+
+  formEl.addEventListener("reset", () => {
+    disableButton(buttonEl);
+  });
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
