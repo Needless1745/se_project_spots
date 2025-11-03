@@ -44,12 +44,12 @@ const toggleButtonState = (inputList, buttonEl) => {
   }
 };
 
-const disableButton = (buttonEl) => {
+export const disableButton = (buttonEl) => {
   buttonEl.disabled = true;
   buttonEl.classList.add(config.inactiveButtonClass);
 };
 
-const resetValidation = (formEl) => {
+export const resetValidation = (formEl) => {
   const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
   const buttonEl = formEl.querySelector(config.submitButtonSelector);
 

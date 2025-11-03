@@ -1,4 +1,19 @@
-import { enableValidation, config } from "./validation.js";
+import "./index.css";
+import {
+  enableValidation,
+  config,
+  resetValidation,
+  disableButton,
+} from "../scripts/validation.js";
+import logo from "../images/logo.svg";
+import avatar from "../images/avatar.jpg";
+import editIcon from "../images/pencil.svg";
+import postIcon from "../images/plus.svg";
+
+document.getElementById("logo").src = logo;
+document.getElementById("avatar").src = avatar;
+document.getElementById("pencil").src = editIcon;
+document.getElementById("plus").src = postIcon;
 
 const initialCards = [
   {
