@@ -9,6 +9,7 @@ import logo from "../images/logo.svg";
 import avatar from "../images/avatar.jpg";
 import editIcon from "../images/pencil.svg";
 import postIcon from "../images/plus.svg";
+import Api from "../scripts/Api.js";
 
 document.getElementById("logo").src = logo;
 document.getElementById("avatar").src = avatar;
@@ -45,6 +46,21 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
 ];
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "e0d99115-774a-4d40-9d24-e1bae166dd7d",
+    "Content-Type": "application/json",
+  },
+});
+
+api.getInitialCards().then((cards) => {
+  cards.forEach(function (item) {
+    const cardElement = getCardElement(item);
+    cardsList.append(cardElement);
+  });
+});
 
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
@@ -183,10 +199,5 @@ function closeModal(modal) {
   document.removeEventListener("keydown", modal._evtEscClose);
   modal.removeEventListener("mousedown", modal._evtOverlayClose);
 }
-
-initialCards.forEach(function (item) {
-  const cardElement = getCardElement(item);
-  cardsList.append(cardElement);
-});
 
 enableValidation(config);
