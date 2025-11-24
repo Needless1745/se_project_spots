@@ -9,7 +9,7 @@ import logo from "../images/logo.svg";
 import avatar from "../images/avatar.jpg";
 import editIcon from "../images/pencil.svg";
 import postIcon from "../images/plus.svg";
-import Api from "../scripts/Api.js";
+import Api from "../utils/Api.js";
 
 document.getElementById("logo").src = logo;
 document.getElementById("avatar").src = avatar;
@@ -55,12 +55,15 @@ const api = new Api({
   },
 });
 
-api.getInitialCards().then((cards) => {
-  cards.forEach(function (item) {
-    const cardElement = getCardElement(item);
-    cardsList.append(cardElement);
-  });
-});
+api
+  .getInitialCards()
+  .then((cards) => {
+    cards.forEach((item) => {
+      const cardElement = getCardElement(item);
+      cardsList.append(cardElement);
+    });
+  })
+  .catch(console.error);
 
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
