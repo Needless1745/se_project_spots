@@ -12,7 +12,7 @@ import postIcon from "../images/plus.svg";
 import Api from "../utils/Api.js";
 
 document.getElementById("logo").src = logo;
-document.getElementById("avatar").src = avatar;
+
 document.getElementById("pencil").src = editIcon;
 document.getElementById("plus").src = postIcon;
 
@@ -57,7 +57,11 @@ const api = new Api({
 
 api
   .getAppInfo()
-  .then(([cards]) => {
+  .then(([cards, users]) => {
+    document.getElementById("avatar").src = users.avatar;
+    profileNameEl.textContent = users.name;
+    profileDescriptionEl.textContent = users.about;
+
     cards.forEach((item) => {
       const cardElement = getCardElement(item);
       cardsList.append(cardElement);
@@ -75,6 +79,8 @@ const editProfileNameInput = editProfileModal.querySelector(
 const editProfileDescriptionInput = editProfileModal.querySelector(
   "#profile-description-input"
 );
+const profileNameEl = document.querySelector(".profile__name");
+const profileDescriptionEl = document.querySelector(".profile__description");
 
 const newPostBtn = document.querySelector(".profile__add-btn");
 const newPostModal = document.querySelector("#new-post-modal");
@@ -83,9 +89,6 @@ const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
 const newPostNameInput = newPostModal.querySelector("#post-caption-input");
 const newPostLinkInput = newPostModal.querySelector("#post-image-input");
 const newPostForm = newPostModal.querySelector(".modal__form");
-
-const profileNameEl = document.querySelector(".profile__name");
-const profileDescriptionEl = document.querySelector(".profile__description");
 
 const previewModal = document.querySelector("#preview-modal");
 const previewModalCloseBtn = previewModal.querySelector(
@@ -153,9 +156,21 @@ previewModalCloseBtn.addEventListener("click", function () {
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
-  profileNameEl.textContent = editProfileNameInput.value;
-  profileDescriptionEl.textContent = editProfileDescriptionInput.value;
-  closeModal(editProfileModal);
+
+  const newName = editProfileNameInput.value;
+  const newAbout = editProfileDescriptionInput.value;
+
+  api
+    .editUserInfo({ name: newName, about: newAbout })
+    .then((updatedUser) => {
+      profileNameEl.textContent = updatedUser.name;
+      profileDescriptionEl.textContent = updatedUser.about;
+
+      closeModal(editProfileModal);
+    })
+    .catch((err) => {
+      console.error(" editUserInfo error:", err);
+    });
 }
 
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
