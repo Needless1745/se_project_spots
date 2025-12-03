@@ -8,15 +8,16 @@ import {
 import logo from "../images/logo.svg";
 import avatar from "../images/avatar.jpg";
 import editIcon from "../images/pencil.svg";
+import pencilLight from "../images/pencil-light.svg";
 import postIcon from "../images/plus.svg";
 import Api from "../utils/Api.js";
 
 document.getElementById("logo").src = logo;
-
+document.querySelector(".profile__edit-icon").src = pencilLight;
 document.getElementById("pencil").src = editIcon;
 document.getElementById("plus").src = postIcon;
 
-const initialCards = [
+/* const initialCards = [
   {
     name: "Golden Gate Bridge",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
@@ -45,7 +46,7 @@ const initialCards = [
     name: "Mountain house",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
-];
+];*/
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
@@ -58,7 +59,7 @@ const api = new Api({
 api
   .getAppInfo()
   .then(([cards, users]) => {
-    document.getElementById("avatar").src = users.avatar;
+    profileAvatarEl.src = users.avatar;
     profileNameEl.textContent = users.name;
     profileDescriptionEl.textContent = users.about;
 
@@ -69,9 +70,7 @@ api
   })
   .catch(console.error);
 
-const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
-const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
 const editProfileForm = editProfileModal.querySelector(".modal__form");
 const editProfileNameInput = editProfileModal.querySelector(
   "#profile-name-input"
@@ -79,6 +78,8 @@ const editProfileNameInput = editProfileModal.querySelector(
 const editProfileDescriptionInput = editProfileModal.querySelector(
   "#profile-description-input"
 );
+const editProfileBtn = document.querySelector(".profile__edit-btn");
+const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
 
@@ -89,6 +90,14 @@ const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
 const newPostNameInput = newPostModal.querySelector("#post-caption-input");
 const newPostLinkInput = newPostModal.querySelector("#post-image-input");
 const newPostForm = newPostModal.querySelector(".modal__form");
+
+const profileAvatarEl = document.querySelector(".profile__avatar");
+const avatarModalBtn = document.querySelector(".profile__avatar-btn");
+const avatarModal = document.querySelector("#avatar-modal");
+const avatarForm = avatarModal.querySelector(".modal__form");
+const avatarSubmitBtn = avatarModal.querySelector(".modal__submit-btn");
+const avatarModalCloseBtn = avatarModal.querySelector(".modal__close");
+const avatarInput = avatarModal.querySelector("#profile-avatar-input");
 
 const previewModal = document.querySelector("#preview-modal");
 const previewModalCloseBtn = previewModal.querySelector(
@@ -149,6 +158,13 @@ newPostBtn.addEventListener("click", function () {
 newPostCloseBtn.addEventListener("click", function () {
   closeModal(newPostModal);
 });
+
+avatarModalBtn.addEventListener("click", function () {
+  resetValidation(avatarForm, config);
+  openModal(avatarModal);
+});
+
+avatarForm.addEventListener("submit", handleAvatarSubmit);
 
 previewModalCloseBtn.addEventListener("click", function () {
   closeModal(previewModal);
@@ -218,4 +234,31 @@ function closeModal(modal) {
   modal.removeEventListener("mousedown", modal._evtOverlayClose);
 }
 
+function handleAvatarSubmit(evt) {
+  evt.preventDefault();
+
+  const avatarLink = avatarInput.value;
+
+  api
+    .editAvatarInfo(avatarLink)
+    .then((data) => {
+      profileAvatarEl.src = data.avatar;
+
+      avatarForm.reset();
+      disableButton(avatarSubmitBtn, settings);
+
+      closeModal(avatarModal);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
 enableValidation(config);
+
+/* TODO:
+-Handle avatar submit
+-Avatar render fix
+- CSS avatar error
+-Animate "saving..." to modal submit btns
+*/
