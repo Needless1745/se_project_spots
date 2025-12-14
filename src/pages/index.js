@@ -5,6 +5,7 @@ import {
   resetValidation,
   disableButton,
 } from "../scripts/validation.js";
+import { handleSubmit } from "../utils/helpers.js";
 import logo from "../images/logo.svg";
 import avatar from "../images/avatar.jpg";
 import editIcon from "../images/pencil.svg";
@@ -14,41 +15,17 @@ import Api from "../utils/Api.js";
 import closeWhitebtn from "../images/close-btn-light.svg";
 
 document.getElementById("logo").src = logo;
-document.querySelector(".profile__avatar").src = avatar;
 document.querySelector(".profile__edit-icon").src = pencilLight;
 document.getElementById("pencil").src = editIcon;
 document.getElementById("plus").src = postIcon;
 
-/* const initialCards = [
-  {
-    name: "Golden Gate Bridge",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "e0d99115-774a-4d40-9d24-e1bae166dd7d",
+    "Content-Type": "application/json",
   },
-  {
-    name: "Val Thorens",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
-  },
-  {
-    name: "Restaurant terrace",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg",
-  },
-  {
-    name: "An outdoor cafe",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg",
-  },
-  {
-    name: "A very long bridge, over the forest and through the trees",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg",
-  },
-  {
-    name: "Tunnel with morning light",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg",
-  },
-  {
-    name: "Mountain house",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
-  },
-];*/
+});
 
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileForm = editProfileModal.querySelector(".modal__form");
@@ -102,18 +79,17 @@ const previewModalCloseBtn = previewModal.querySelector(
 const previewImageEl = previewModal.querySelector(".modal__image");
 const previewImageCaption = previewModal.querySelector(".modal__caption");
 
+//Card Elements
 const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card");
+
 const cardsList = document.querySelector(".cards__list");
 
-const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "e0d99115-774a-4d40-9d24-e1bae166dd7d",
-    "Content-Type": "application/json",
-  },
-});
+let selectedCard;
+let selectedCardId;
+
+// Init load
 
 api
   .getAppInfo()
@@ -128,9 +104,6 @@ api
     });
   })
   .catch(console.error);
-
-let selectedCard;
-let selectedCardId;
 
 function handleDeleteCard(cardElement, cardData) {
   selectedCard = cardElement;
@@ -240,17 +213,21 @@ function handleEditProfileSubmit(evt) {
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 
 function handleAddCardSubmit(evt) {
-  evt.preventDefault();
+  function makeRequest() {
+    const newCardData = {
+      name: newPostNameInput.value,
+      link: newPostLinkInput.value,
+    };
 
-  const inputValues = {
-    name: newPostNameInput.value,
-    link: newPostLinkInput.value,
-  };
+    return api.addCard(newCardData).then((cardDataFromServer) => {
+      const cardElement = getCardElement(cardDataFromServer);
+      cardsList.prepend(cardElement);
+      disableButton(modalSubmitBtn, settings);
+      closeModal(newPostModal);
+    });
+  }
 
-  const cardElement = getCardElement(inputValues);
-  cardsList.prepend(cardElement);
-  evt.target.reset();
-  closeModal(newPostModal);
+  handleSubmit(makeRequest, evt);
 }
 
 newPostForm.addEventListener("submit", handleAddCardSubmit);
