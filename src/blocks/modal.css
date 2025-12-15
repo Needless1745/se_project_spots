@@ -282,11 +282,6 @@
     font-size: 20px;
     max-width: none;
   }
-
-  .modal__close-btn {
-    top: 5px;
-    right: 5px;
-  }
 }
 
 @media screen and (max-width: 627px) {
@@ -308,6 +303,11 @@
     right: 0;
   }
 
+  #delete-modal .modal__close-btn {
+    top: 0;
+    right: -32px;
+  }
+
   .modal__image {
     max-width: unset;
   }
@@ -320,5 +320,17 @@
   .modal__submit-btn {
     width: 100%;
     max-width: none;
+  }
+
+  #delete-modal .delete-form {
+    flex-direction: column;
+    align-items: column;
+  }
+
+  #delete-modal .delete-form .modal__submit-btn,
+  #delete-modal .delete-form .modal__btn-cancel {
+    width: auto;
+    max-width: none;
+    min-width: 156px;
   }
 }

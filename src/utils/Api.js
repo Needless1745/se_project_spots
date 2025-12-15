@@ -32,7 +32,7 @@ class Api {
   }
 
   editUserInfo({ name, about }) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return this._request(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
 
@@ -40,23 +40,13 @@ class Api {
         name,
         about,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
     });
   }
   editAvatarInfo(avatar) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
+    return this._request(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({ avatar }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
     });
   }
 
@@ -71,6 +61,13 @@ class Api {
   deleteCard(id) {
     return this._request(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
+      headers: this._headers,
+    });
+  }
+
+  changeLikeStatus(id, isLiked) {
+    return this._request(`${this._baseUrl}/cards/${id}/likes`, {
+      method: isLiked ? "DELETE" : "PUT",
       headers: this._headers,
     });
   }
