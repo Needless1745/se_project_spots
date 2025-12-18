@@ -23,3 +23,9 @@ This project is an image-sharing application that allows users to upload and int
 - Improved UX via loading state implementation ("Saving/Deleting.. on Modal Buttons)
 - Api inegratiion via Fetch,Post and Delete request
 - Developer tools in Chrome
+
+## Project Deployment
+
+## Pitch Video
+
+https://www.loom.com/share/b64886fe2aef48b385ff7ecaf440388a

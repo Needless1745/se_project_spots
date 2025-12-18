@@ -20,17 +20,14 @@ export function handleSubmit(request, evt) {
 
   const submitBtn = evt.submitter;
 
-  // show loading state using your existing helper
   setBtnText(submitBtn, true);
 
   request()
     .then(() => {
-      // reset form on success
       evt.target.reset();
     })
     .catch(console.error)
     .finally(() => {
-      // restore button text / state
       setBtnText(submitBtn, false);
     });
 }
