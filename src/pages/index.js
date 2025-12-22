@@ -13,6 +13,13 @@ import postIcon from "../images/plus.svg";
 import Api from "../utils/Api.js";
 import closeWhitebtn from "../images/close-btn-light.svg";
 
+const link =
+  document.querySelector("link[rel~='icon']") || document.createElement("link");
+
+link.rel = "icon";
+link.href = favicon;
+document.head.appendChild(link);
+
 document.getElementById("logo").src = logo;
 document.querySelector(".profile__edit-icon").src = pencilLight;
 document.getElementById("pencil").src = editIcon;
