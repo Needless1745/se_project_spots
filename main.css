@@ -354,14 +354,14 @@ template {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  src: url(/se_project_spots/35d26b781dc5fda684cc.ttf) format("truetype");
+  src: url(35d26b781dc5fda684cc.ttf) format("truetype");
 }
 
 @font-face {
   font-family: "Poppins";
   font-style: medium;
   font-weight: 500;
-  src: url(/se_project_spots/673ed42382ab264e0bf5.ttf) format("truetype");
+  src: url(673ed42382ab264e0bf5.ttf) format("truetype");
 }
 
 .page {
@@ -625,7 +625,7 @@ template {
 }
 
 .card__delete-btn {
-  background-image: url(/se_project_spots/681e9a719890c3953022.svg);
+  background-image: url(681e9a719890c3953022.svg);
   background-color: transparent;
   border: none;
   width: 32px;
@@ -637,12 +637,12 @@ template {
 }
 
 .card__delete-btn:hover {
-  background-image: url(/se_project_spots/58c61e0eac124c5e75fa.svg);
+  background-image: url(58c61e0eac124c5e75fa.svg);
   transition: 0.5s;
 }
 
 .card__like-btn {
-  background-image: url(/se_project_spots/1408283b2eeada9700b0.svg);
+  background-image: url(1408283b2eeada9700b0.svg);
   height: 20px;
   width: 23px;
   border: none;
@@ -655,7 +655,7 @@ template {
 }
 
 .card__like-btn_active {
-  background-image: url(/se_project_spots/0bb42f0e46b29342b0f1.svg);
+  background-image: url(0bb42f0e46b29342b0f1.svg);
   opacity: 1;
 }
 
@@ -764,7 +764,7 @@ template {
   right: 50px;
   width: 40px;
   height: 40px;
-  background-image: url(/se_project_spots/b9d33f1846c7b4e4e5d3.svg);
+  background-image: url(b9d33f1846c7b4e4e5d3.svg);
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -779,7 +779,7 @@ template {
   top: 0;
   right: -52.5px;
   background: transparent;
-  background-image: url(/se_project_spots/2a6d443422ae27e8b633.svg);
+  background-image: url(2a6d443422ae27e8b633.svg);
   opacity: 100%;
   cursor: pointer;
   transition: opacity 0.35s ease-in-out;
@@ -796,7 +796,7 @@ template {
   width: 40px;
   height: 40px;
   background-color: transparent;
-  background-image: url(/se_project_spots/2a6d443422ae27e8b633.svg);
+  background-image: url(2a6d443422ae27e8b633.svg);
   background-size: 40px 40px;
   background-repeat: no-repeat;
   background-position: center;
