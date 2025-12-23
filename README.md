@@ -26,6 +26,8 @@ This project is an image-sharing application that allows users to upload and int
 
 ## Project Deployment
 
+https://needless1745.github.io/se_project_spots/
+
 ## Pitch Video
 
 https://www.loom.com/share/b64886fe2aef48b385ff7ecaf440388a

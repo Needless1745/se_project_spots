@@ -6,24 +6,7 @@ import {
   disableButton,
 } from "../scripts/validation.js";
 import { handleSubmit } from "../utils/helpers.js";
-import logo from "../images/logo.svg";
-import editIcon from "../images/pencil.svg";
-import pencilLight from "../images/pencil-light.svg";
-import postIcon from "../images/plus.svg";
 import Api from "../utils/Api.js";
-import closeWhitebtn from "../images/close-btn-light.svg";
-
-const link =
-  document.querySelector("link[rel~='icon']") || document.createElement("link");
-
-link.rel = "icon";
-link.href = favicon;
-document.head.appendChild(link);
-
-document.getElementById("logo").src = logo;
-document.querySelector(".profile__edit-icon").src = pencilLight;
-document.getElementById("pencil").src = editIcon;
-document.getElementById("plus").src = postIcon;
 
 //Api instance
 const api = new Api({
@@ -71,8 +54,6 @@ const deleteCancelBtn = deleteModal.querySelector(".modal__btn-cancel");
 const deleteModalCloseBtn = deleteModal.querySelector(
   ".modal__close_type_delete"
 );
-deleteModalCloseBtn.style.backgroundImage = `url(${closeWhitebtn})`;
-deleteModalCloseBtn.style.backgroundColor = "transparent";
 
 if (deleteCancelBtn) {
   deleteCancelBtn.addEventListener("click", () => {
