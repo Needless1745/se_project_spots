@@ -41,12 +41,12 @@
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
             <button type="button" class="profile__edit-btn">
-              <img id="pencil" alt="Edit profile button image" />Edit profile
+              <img src="<%=require('./images/pencil.svg')%>" />Edit profile
             </button>
           </div>
           <button type="button" class="profile__add-btn">
             <img
-              src="<%=require('./images/pencil.svg')%>"
+              src="<%=require('./images/plus.svg')%>"
               class="profile__add-btn-img"
               id="plus"
               alt="add post button image"
@@ -113,7 +113,9 @@
       </div>
       <div id="new-post-modal" class="modal">
         <div class="modal__container">
-          <button class="modal__close-btn" type="button"></button>
+          <button class="modal__close-btn" type="button">
+            <img src="<%require('./images/plus.svg')%>" />
+          </button>
           <h2 class="modal__title">New post</h2>
           <form class="modal__form" novalidate>
             <label for="post-image-input" class="modal__label">
