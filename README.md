@@ -2,34 +2,32 @@
 
 ### Overview
 
-An image sharing site. Providing users with an opportunity to share and discover places around the world.
+This project is an image-sharing application that allows users to upload and interact with photos of "Spots" they have visited. The primary goal of this stage of development was to apply concepts learned in Webpack configuration and asynchronous JavaScript by integrating external APIs for dynamic data rendering and state management.
+
+## Core Features
+
+-Avatar updates via form submission
+-Form Validation on forms
+-Modal system with reusable popup classes
+-Responsive layout using CSS Grid & Flexbox
+-Profile & Post interactions via API requests
 
 ## Tech Stack
 
 - HTML
 - CSS
+- Vanilla, Asynchronous Javascript (ES6+)
 - Responsive Design
-- DOT
+- BEM methondology
+- DOT (Course Ai instructor)
+- Improved UX via loading state implementation ("Saving/Deleting.. on Modal Buttons)
+- Api inegratiion via Fetch,Post and Delete request
 - Developer tools in Chrome
 
-## Making webpage responsive through different devices
-
-The `@media screen and (max-width: 627px)` block is a CSS **media query** which is used to apply styles only when the screen has a maximum width of 627 pixels.
-
-```css
-@media screen and (max-width: 627px) {
-  .cards__list {
-    grid-template-columns: repeat(auto-fit, 288px);
-    gap: 20px 12px;
-  }
-}
-```
-
-This allows for the elements in the site to be organized on screen depending on the device the user is on.
-
-![alt text](./images/Phoneview.png)
-![alt text](./images/Tabletview.png)
-
-## Deployment
+## Project Deployment
 
 https://needless1745.github.io/se_project_spots/
+
+## Pitch Video
+
+https://www.loom.com/share/b64886fe2aef48b385ff7ecaf440388a

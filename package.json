@@ -1,8 +1,8 @@
 {
   "name": "se_project_spots",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Spots, an image sharing site",
-  "homepage": "https://github.com/Needless1745/se_project_spots#readme",
+  "homepage": "https://Needless1745.github.io/se_project_spots/",
   "bugs": {
     "url": "https://github.com/Needless1745/se_project_spots/issues"
   },
@@ -30,6 +30,7 @@
     "css-loader": "6.7.1",
     "cssnano": "5.1.12",
     "gh-pages": "^6.3.0",
+    "html-loader": "^5.1.0",
     "html-webpack-plugin": "5.5.0",
     "mini-css-extract-plugin": "2.6.1",
     "postcss": "^8.5.6",
